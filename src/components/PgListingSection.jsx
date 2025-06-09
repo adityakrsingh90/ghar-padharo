@@ -7,14 +7,12 @@ import girlsPgImg from '../assets/2.webp';
 import boysPgImg from '../assets/3.webp'; 
 import hostelGirlsImg from '../assets/4.webp'; 
 
-//pg
 import pg1 from '../assets/f1.jpg';
 import pg2 from '../assets/f2.jpg';
 import pg3 from '../assets/f3.jpg';
 import pg4 from '../assets/f4.jpg';
 import pg5 from '../assets/f5.jpg';
 import pg6 from '../assets/f6.jpg';
-
 
 const PgListingSection = () => {
   const pgCategories = [
@@ -102,11 +100,13 @@ const PgListingSection = () => {
   ];
 
   return (
-    <section className="mt-12 p-4">
+    <section className="mt-12 px-4 max-w-7xl mx-auto">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-8">
         Find a PG & Hostel in Dehradun Away from Home
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+
+      {/* PG Categories */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {pgCategories.map(category => (
           <Card
             key={category.id}
@@ -120,7 +120,9 @@ const PgListingSection = () => {
       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mt-12 mb-8">
         Popular PG Listings in Dehradun
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+      {/* PG Listings */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {dummyPgListings.map(pg => (
           <ListingCard
             key={pg.id}

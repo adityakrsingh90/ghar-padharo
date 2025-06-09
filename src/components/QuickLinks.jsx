@@ -11,32 +11,26 @@ const QuickLinks = () => {
     { name: 'Post Free Property Ads', href: '#post-ad' },
   ];
 
-  const textsToCycle = ['New Projects', 'GharPadharo'];
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [displayingText, setDisplayingText] = useState(textsToCycle[0]);
-  const [isFadingOut, setIsFadingOut] = useState(false);
-
-  const [activeIndex, setActiveIndex] = useState(0);
+  const animatedTexts = ['New Projects', 'GharPadharo'];
+  const [textIndex, setTextIndex] = useState(0);
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsFadingOut(true);
+      setFade(true);
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % textsToCycle.length);
-        setIsFadingOut(false);
-      }, 250);
+        setTextIndex((prev) => (prev + 1) % animatedTexts.length);
+        setFade(false);
+      }, 300);
     }, 2000);
-
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    setDisplayingText(textsToCycle[currentIndex]);
-  }, [currentIndex]);
+  const [activeIndex, setActiveIndex] = useState(0); // Default Buy active
 
   return (
     <section className="mt-8 mb-4 max-w-6xl mx-auto px-4">
-      <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2 relative">
+      <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 relative">
         {initialLinks.map((link, index) => (
           <div
             key={index}
@@ -47,34 +41,28 @@ const QuickLinks = () => {
             <a
               href={link.href}
               className={`
-                text-base font-medium transition-all duration-200 
-                whitespace-nowrap inline-flex items-center justify-center pb-1
-                ${activeIndex === index ? 'text-red-600' : 'text-gray-700 hover:text-red-600'}
+                text-base font-medium inline-block transition-all duration-300
+                ${activeIndex === index ? 'text-red-600' : 'text-gray-800 hover:text-red-600'}
               `}
-              style={{ minWidth: '100px', height: '24px' }}
             >
               {link.name === 'New Projects' ? (
                 <span
-                  key={displayingText}
                   className={`
-                    absolute top-0 left-0 right-0 bottom-0
-                    flex items-center justify-center
-                    transition-opacity duration-300 ease-out
-                    ${isFadingOut ? 'opacity-0' : 'opacity-100'}
-                    animate-swipe-up
-                    ${displayingText === 'GharPadharo' ? 'text-red-600 font-bold italic' : ''}
+                    inline-block transition-opacity duration-300 ease-in-out
+                    ${fade ? 'opacity-0' : 'opacity-100'}
+                    ${animatedTexts[textIndex] === 'GharPadharo' ? 'text-red-600 italic font-bold' : ''}
                   `}
                 >
-                  {displayingText}
+                  {animatedTexts[textIndex]}
                 </span>
               ) : (
                 link.name
               )}
             </a>
 
-            {/* Bold underline */}
+            {/* Red underline only on active or hover */}
             <span
-              className={`absolute bottom-0 left-0 h-[6px] w-full transition-all duration-500 ${
+              className={`absolute bottom-[-2px] left-0 h-[3px] w-full transition-all duration-300 ${
                 activeIndex === index ? 'bg-red-600' : 'bg-transparent'
               }`}
             />

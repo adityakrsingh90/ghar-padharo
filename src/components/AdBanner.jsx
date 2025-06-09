@@ -20,27 +20,27 @@ const AdBanner = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-48 sm:h-52 overflow-hidden rounded-xl shadow-md">
+    <div className="relative w-full max-h-[500px] aspect-video overflow-hidden rounded-xl shadow-lg">
       {images.map((image, index) => (
         <img
           key={index}
           src={image}
           alt={`Ad ${index + 1}`}
-          className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         />
       ))}
 
-      {/* Dots */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+      {/* Indicators */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
         {images.map((_, index) => (
-          <div
+          <span
             key={index}
-            className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-              index === currentIndex ? "bg-red-600" : "bg-gray-400"
-            }`}
-          ></div>
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex ? "bg-red-600 scale-110" : "bg-gray-400"
+            } transition-all duration-300`}
+          ></span>
         ))}
       </div>
     </div>

@@ -3,53 +3,54 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="bg-white py-8 mt-12 border-t border-gray-200">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div className="md:col-span-1">
-          <h3 className="text-2xl font-bold text-red-600">GharPadharo</h3>
-          <p className="text-gray-600 text-sm mt-2">
-            Find your dream home away from home.
-          </p>
-          <div className="flex space-x-4 mt-4">
-            <a href="#" className="text-gray-600 hover:text-red-600"><FaFacebookF /></a>
-            <a href="#" className="text-gray-600 hover:text-red-600"><FaTwitter /></a>
-            <a href="#" className="text-gray-600 hover:text-red-600"><FaInstagram /></a>
-            <a href="#" className="text-gray-600 hover:text-red-600"><FaLinkedinIn /></a>
+    <footer className="bg-white/80 backdrop-blur-sm border-t border-gray-200 pt-10 pb-6 px-4 mt-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center md:text-left">
+        
+        {/* Logo + Social */}
+        <div>
+          <h3 className="text-2xl font-extrabold text-red-600">GharPadharo</h3>
+          <p className="text-gray-600 text-sm mt-2">Find your dream home away from home.</p>
+          <div className="flex justify-center md:justify-start space-x-4 mt-4">
+            <a href="#" className="text-gray-500 hover:text-red-600 transition"><FaFacebookF /></a>
+            <a href="#" className="text-gray-500 hover:text-red-600 transition"><FaTwitter /></a>
+            <a href="#" className="text-gray-500 hover:text-red-600 transition"><FaInstagram /></a>
+            <a href="#" className="text-gray-500 hover:text-red-600 transition"><FaLinkedinIn /></a>
           </div>
         </div>
 
+        {/* Properties */}
         <div>
-          <h4 className="text-lg font-semibold text-gray-800 mb-4">Properties</h4>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Buy</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Rent</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Sell</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">New Projects</a></li>
+          <h4 className="text-lg font-bold text-gray-800 mb-4">Properties</h4>
+          <ul className="space-y-2 text-sm">
+            {["Buy", "Rent", "Sell", "New Projects"].map((item, idx) => (
+              <li key={idx}><a href="#" className="text-gray-600 hover:text-red-600 transition">{item}</a></li>
+            ))}
           </ul>
         </div>
 
+        {/* Services */}
         <div>
-          <h4 className="text-lg font-semibold text-gray-800 mb-4">Services</h4>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Home Loans</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Home Interiors</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Post Property Ad</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Owner Services</a></li>
+          <h4 className="text-lg font-bold text-gray-800 mb-4">Services</h4>
+          <ul className="space-y-2 text-sm">
+            {["Home Loans", "Home Interiors", "Post Property Ad", "Owner Services"].map((item, idx) => (
+              <li key={idx}><a href="#" className="text-gray-600 hover:text-red-600 transition">{item}</a></li>
+            ))}
           </ul>
         </div>
 
+        {/* Support */}
         <div>
-          <h4 className="text-lg font-semibold text-gray-800 mb-4">Help & Support</h4>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-600 hover:text-red-600">MB Advice</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Help Center</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">Contact Us</a></li>
-            <li><a href="#" className="text-gray-600 hover:text-red-600">FAQs</a></li>
+          <h4 className="text-lg font-bold text-gray-800 mb-4">Help & Support</h4>
+          <ul className="space-y-2 text-sm">
+            {["MB Advice", "Help Center", "Contact Us", "FAQs"].map((item, idx) => (
+              <li key={idx}><a href="#" className="text-gray-600 hover:text-red-600 transition">{item}</a></li>
+            ))}
           </ul>
         </div>
+
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 mt-8 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
+      <div className="mt-10 border-t border-gray-200 pt-4 text-center text-xs text-gray-500">
         &copy; {new Date().getFullYear()} GharPadharo. All rights reserved.
       </div>
     </footer>
